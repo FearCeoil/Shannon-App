@@ -1,0 +1,67 @@
+[
+    {
+        "description": "Calm",
+        "waveHeight": "0 ft",
+        "conditions": "Water like mirror"
+    },
+    {
+        "description": "Light air",
+        "waveHeight": "0-1 ft",
+        "conditions": "Ripples with the appearance of scales are formed, but without foam crests"
+    },
+    {
+        "description": "Light breeze",
+        "waveHeight": "1–2 ft",
+        "conditions": "Small wavelets, still short but more pronounced; crests have a glassy appearance and do not break"
+    },
+    {
+        "description": "Gentle breeze",
+        "waveHeight": "2–3.5 ft",
+        "conditions": "Large wavelets. Crests begin to break; scattered whitecaps"
+    },
+    {
+        "description": "Moderate breeze",
+        "waveHeight": "3.5–6 ft",
+        "conditions": "Small waves with breaking crests. Fairly frequent whitecaps."
+    },
+    {
+        "description": "Fresh breeze",
+        "waveHeight": "6–9 ft",
+        "conditions": "Moderate waves of some length. Many whitecaps. Small amounts of spray."
+    },
+    {
+        "description": "Strong breeze",
+        "waveHeight": "9–13 ft",
+        "conditions": "Long waves begin to form. White foam crests are very frequent. Some airborne spray is present."
+    },
+    {
+        "description": "High wind,moderate gale,near gale",
+        "waveHeight": "13–19 ft",
+        "conditions": "Water heaps up. Some foam from breaking waves is blown into streaks along wind direction. Moderate amounts of airborne spray."
+    },
+    {
+        "description": "Fresh gale",
+        "waveHeight": "18–25 ft",
+        "conditions": "Moderately high waves with breaking crests forming spindrift. Well-marked streaks of foam are blown along wind direction. Considerable airborne spray."
+    },
+    {
+        "description": "Strong/Severe gale",
+        "waveHeight": "23–32 ft",
+        "conditions": "High waves whose crests sometimes roll over. Dense foam is blown along wind direction. Large amounts of airborne spray may begin to reduce visibility."
+    },
+    {
+        "description": "Storm",
+        "waveHeight": "29–41 ft",
+        "conditions": "Very high waves with overhanging crests. Large patches of foam from wave crests give the water a white appearance. Considerable tumbling of waves with heavy impact. Large amounts of airborne spray reduce visibility."
+    },
+    {
+        "description": "Violent storm",
+        "waveHeight": "37–52 ft",
+        "conditions": "Exceptionally high waves. Very large patches of foam, driven before the wind, cover much of the sea surface. Very large amounts of airborne spray severely reduce visibility."
+    },
+    {
+        "description": "Hurricane force",
+        "waveHeight": "≥ 46 ft",
+        "conditions": "Huge waves. Water is completely white with foam and spray. Air is filled with driving spray, greatly reducing visibility."
+    }
+]

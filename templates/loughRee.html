@@ -1,0 +1,32 @@
+﻿<ion-view view-title="Lough Ree">
+    <ion-content class="padding">
+        <div class="list card">
+            <div class="item item-divider">Current Weather</div>
+            <div class="item item-body">
+                <img height="50" width="50" src="{{icon}}" />
+                <p>Weather: {{weather}}</p>
+                <p>Temp: {{temp}}  &#8451</p>
+                <p>Wind Speed: {{windSpeed}} Kph</p>
+                <p>Wind Dir: {{windDir}}</p>
+
+                <p>Force: {{beaufortNum}}</p>
+                <p>Description: {{beaufortDes}}</p>
+                <p>Conditions: {{beaufortCon}}</p>
+               
+            </div>
+        </div>
+        <div class="list card">
+            <div class="item item-divider">Hourly</div>
+            <div class="item item-body">
+              
+                <h2>Hourly</h2>
+                <p>{{dt}} wind speed: {{ws}} wind direction: {{wd}} force: {{b}}</p>
+                <p>{{dt1}} wind speed: {{ws1}} wind direction: {{wd1}} force: {{b1}}</p>
+                <p>{{dt2}} wind speed: {{ws2}} wind direction: {{wd2}} force: {{b2}}</p>
+                <p>{{dt3}} wind speed: {{ws3}} wind direction: {{wd3}} force: {{b3}}</p>
+                <p>{{dt4}} wind speed: {{ws4}} wind direction: {{wd4}} force: {{b4}}</p>
+
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

@@ -1,0 +1,66 @@
+﻿<ion-view view-title="Journey Time">
+    <ion-content class="padding">
+        <div class="list card">
+            <div class="item item-divider">Cruising Times</div>
+            <div class="item item-body">
+                <form ng-submit="onSubmit()">
+                    <div class="list">
+
+                        <label class="item item-input item-select">
+                            <div class="input-label">Starting point</div>
+                            <select ng-model="form.start">
+                                <option>Killaloe</option>
+                                <option>Scarriff</option>
+                                <option>Portummna</option>
+                                <option>Banagher</option>
+                                <option>Shannonbridge</option>
+                                <option>Athlone</option>
+                                <option>Lanesborough</option>
+                                <option>Tarmonbarry</option>
+                                <option>Roosky</option>
+                                <option>Dromod</option>
+                                <option>Carrick on Shannon</option>
+                                <option>Leitrim</option>
+                                <option>Ballinamore</option>
+                                <option>Ballyconnell</option>
+                                <option>Belturbet</option>
+                                <option>Enniskillin</option>
+                                <option>Beleek</option>
+                            </select>
+                        </label>
+
+                        <label class="item item-input item-select">
+                            <div class="input-label">Destination</div>
+                            <select ng-model="form.des">
+                                <option>Beleek</option>
+                                <option>Enniskillin</option>
+                                <option>Belturbet</option>
+                                <option>Ballyconnell</option>
+                                <option>Ballinamore</option>
+                                <option>Leitrim</option>
+                                <option>Carrick on Shannon</option>
+                                <option>Dromod</option>
+                                <option>Roosky</option>
+                                <option>Tarmonbarry</option>
+                                <option>Lanesborough</option>
+                                <option>Athlone</option>
+                                <option>Shannonbridge</option>
+                                <option>Banagher</option>
+                                <option>Portummna</option>
+                                <option>Scarriff</option>
+                                <option>Killaloe</option>
+                            </select>
+                        </label>
+          
+                        <button type="submit" class="button button-block button-positive">
+                            Go
+                        </button>
+
+                    </div>   
+                </form>
+               <h2>{{cruiseTime}}</h2>
+          
+            </div>
+        </div>
+    </ion-content>
+</ion-view>
