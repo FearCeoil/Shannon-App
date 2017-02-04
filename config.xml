@@ -5,7 +5,7 @@
   xmlns="http://www.w3.org/ns/widgets" 
   xmlns:cdv="http://cordova.apache.org/ns/1.0" 
   defaultLocale="en-US">
-  <name>ionic-js-blank1</name>
+  <name>Shannon App</name>
   <description>An Ionic Framework and Cordova project for Visual Studio</description>
   <author email="gary.reddy@webelevate.ie" href="http://taco.visualstudio.com">GaryReddy</author>
   <content src="index.html" />
