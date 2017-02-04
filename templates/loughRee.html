@@ -1,31 +1,91 @@
 ﻿<ion-view view-title="Lough Ree">
     <ion-content class="padding">
-        <div class="list card">
+        <div class="card">
             <div class="item item-divider">Current Weather</div>
             <div class="item item-body">
-                <img height="50" width="50" src="{{icon}}" />
-                <p>Weather: {{weather}}</p>
-                <p>Temp: {{temp}}  &#8451</p>
-                <p>Wind Speed: {{windSpeed}} Kph</p>
-                <p>Wind Dir: {{windDir}}</p>
-
-                <p>Force: {{beaufortNum}}</p>
-                <p>Description: {{beaufortDes}}</p>
-                <p>Conditions: {{beaufortCon}}</p>
-               
+              
+                <div class="list">
+                    <div class="item item-avatar">
+                        <img src="{{icon}}" />
+                        <h2>{{weather}}</h2>
+                        <p>Weather Now</p>
+                    </div>
+                    <div class="item item-avatar">
+                        <img src="img/temp.png" />
+                        <h2>{{temp}}  &#8451</h2>
+                        <p>Temperature</p>
+                    </div>
+                    <div class="item item-avatar">
+                        <img src="img/windspeed.png" />
+                        <h2>{{windSpeed}} Kph</h2>
+                        <p>Wind Speed</p>
+                    </div>
+                    <div class="item item-avatar">
+                        <img src="img/windDir.png" />
+                        <h2>{{windDir}}</h2>
+                        <p>Wind Direction</p>
+                    </div>
+                </div>
             </div>
+            <div class="item item-divider">Beaufort Scale</div>
+            
+            <div class="item item-text-wrap" style="background-color:#f7faff">
+                <h2>Wind: Force {{beaufortNum}}</h2>
+                <h2>Description: {{beaufortDes}}</h2>
+                <h2>Conditions: {{beaufortCon}}</h2>
+            </div>
+
+            <div class="item item-divider">Hourly</div>
+
+            <div class="row">
+                <div class="col">Time</div>
+                <div class="col"><img height="20" width="20" src="img/windspeed.png" /></div>
+                <div class="col"><img height="20" width="20" src="img/windDir.png" /></div>
+                <div class="col">Force</div>
+            </div>
+
+            <div class="row" style="background-color:#f7faff">
+                <div class="col">{{dt}}</div>
+                <div class="col">{{ws}}</div>
+                <div class="col">{{wd}}</div>
+                <div class="col">{{b}}</div>
+            </div>
+
+            <div class="row">
+                <div class="col">{{dt1}}</div>
+                <div class="col">{{ws1}}</div>
+                <div class="col">{{wd1}}</div>
+                <div class="col">{{b1}}</div>
+            </div>
+
+            <div class="row" style="background-color:#f7faff">
+                <div class="col">{{dt2}}</div>
+                <div class="col">{{ws2}}</div>
+                <div class="col">{{wd2}}</div>
+                <div class="col">{{b2}}</div>
+            </div>
+
+            <div class="row">
+                <div class="col">{{dt3}}</div>
+                <div class="col">{{ws3}}</div>
+                <div class="col">{{wd3}}</div>
+                <div class="col">{{b3}}</div>
+            </div>
+
+            <div class="row" style="background-color:#f7faff">
+                <div class="col">{{dt4}}</div>
+                <div class="col">{{ws4}}</div>
+                <div class="col">{{wd4}}</div>
+                <div class="col">{{b4}}</div>
+            </div>
+         
+          
         </div>
         <div class="list card">
-            <div class="item item-divider">Hourly</div>
+            <div class="item item-divider">Tomorrow</div>
             <div class="item item-body">
               
-                <h2>Hourly</h2>
-                <p>{{dt}} wind speed: {{ws}} wind direction: {{wd}} force: {{b}}</p>
-                <p>{{dt1}} wind speed: {{ws1}} wind direction: {{wd1}} force: {{b1}}</p>
-                <p>{{dt2}} wind speed: {{ws2}} wind direction: {{wd2}} force: {{b2}}</p>
-                <p>{{dt3}} wind speed: {{ws3}} wind direction: {{wd3}} force: {{b3}}</p>
-                <p>{{dt4}} wind speed: {{ws4}} wind direction: {{wd4}} force: {{b4}}</p>
-
+           
             </div>
         </div>
     </ion-content>
