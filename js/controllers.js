@@ -84,26 +84,60 @@ function toBeauford(data) {
     return data;
 }
 
+function warning(data) {
+
+    if(data >=50 && data <= 64){
+        data = 1;
+    } else if (data >= 65 && data <= 79) {
+        data = 2;
+    } else if (data >= 80) {
+        data = 3;
+    } else {
+        data = 0;
+    }
+
+    return data;
+}
+
 angular.module('starter.controllers', [])
 
 .controller('LoughReeCtrl', function ($scope,Weather, Beaufort, Hourly) {
-     Weather.all().success(function (response) {
+    Weather.all().success(function (response) {
 
+             
+            
             var location = response.city.name;
             var currentWeather = capitalize(response.list[0].weather[0].description);
             var currentTemp = response.list[0].temp.day.toFixed(0);
             var wind = toKPH(response.list[0].speed);
             var windb = toBeauford(toKPH(response.list[0].speed));
             var windDeg = windDir(response.list[0].deg);
-            var icon = response.list[0].weather[0].icon;
-            var iconSrc = "http://openweathermap.org/img/w/" + icon + ".png";
+            var weatherIcon = response.list[0].weather[0].icon;
+           // var iconSrc = "http://openweathermap.org/img/w/" + icon + ".png";
+            var weatherIconSrc = "img/weatherIcons/" + weatherIcon + ".png";
+            var windDirIconSrc = "img/windIcons/" + windDeg + ".png";
+
 
             $scope.location = location;
             $scope.weather = currentWeather;
             $scope.temp = currentTemp;
             $scope.windSpeed = wind;
+            $scope.windDirIcon = windDirIconSrc;
+            $scope.weatherIcon = weatherIconSrc;
+
             $scope.windDir = windDeg;
-            $scope.icon = iconSrc;
+
+            if(warning(wind) == 1){
+                $scope.show = 'msg1';
+            } else if (warning(wind) == 2) {
+                $scope.show = 'msg2';
+            } else if (warning(wind) == 3) {
+                $scope.show = 'msg3';
+            } else {
+                $scope.show = '';
+            }
+
+            
       
                 Beaufort.all().success(function (response) {
                         var pos = windb;

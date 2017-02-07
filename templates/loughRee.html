@@ -4,7 +4,7 @@
             <div class="item item-divider">Current Weather</div>
             <div class="item item-body">
               
-                <div class="list">
+                <!--<div class="list">
                     <div class="item item-avatar">
                         <img src="{{icon}}" />
                         <h2>{{weather}}</h2>
@@ -25,6 +25,34 @@
                         <h2>{{windDir}}</h2>
                         <p>Wind Direction</p>
                     </div>
+                </div>-->
+                <div class="row">
+                    <div ng-show="show == 'msg1'" id="yellow">
+                        There is a status Yellow warning in effect!
+                    </div>
+                </div>
+                <div class="row">
+                    <div ng-show="show == 'msg2'" id="orange">
+                        There is a status Orange warning in effect!
+                    </div>
+                </div>
+                <div class="row">
+                    <div ng-show="show == 'msg3'"id="red">
+                        There is a status Red warning in effect!
+                    </div>
+                </div>
+
+                <div class="row" style="border-bottom:solid;">
+                    <div class="col"><img src="{{weatherIcon}}" height="50" width="50" /></div>
+                    <div class="col"><img src="{{windDirIcon}}" height="50" width="50" /></div>
+                    <div class="col"><img src="img/tempIcons/temp3.png"  height="50" width="30"/></div>
+                    <div class="col"><img src="img/windIcons/wind.png" height="70" width="70" /></div>
+                </div>
+                <div class="row" style="padding-top:5px;">
+                    <div class="col">{{weather}}</div>
+                    <div class="col">{{windDir}}</div>
+                    <div class="col">{{temp}}  &#8451</div>
+                    <div class="col">{{windSpeed}} Kph</div>
                 </div>
             </div>
             <div class="item item-divider">Beaufort Scale</div>

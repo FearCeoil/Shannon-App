@@ -1,1 +1,16 @@
 ﻿/* Empty. Add your own CSS if you like */
+#yellow{
+    color:black;
+    background-color: yellow;
+    padding:10px;
+}
+#orange{
+    color:black;
+    background-color: orangered;
+    padding:10px;
+}
+#red{
+    color:black;
+    background-color: red;
+    padding:10px;
+}
