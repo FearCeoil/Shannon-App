@@ -104,8 +104,6 @@ angular.module('starter.controllers', [])
 .controller('LoughReeCtrl', function ($scope,Weather, Beaufort, Hourly) {
     Weather.all().success(function (response) {
 
-             
-            
             var location = response.city.name;
             var currentWeather = capitalize(response.list[0].weather[0].description);
             var currentTemp = response.list[0].temp.day.toFixed(0);
@@ -124,7 +122,6 @@ angular.module('starter.controllers', [])
             $scope.windSpeed = wind;
             $scope.windDirIcon = windDirIconSrc;
             $scope.weatherIcon = weatherIconSrc;
-
             $scope.windDir = windDeg;
 
             if(warning(wind) == 1){
@@ -177,7 +174,7 @@ angular.module('starter.controllers', [])
 
                 });
 
-     });//end json call
+     });//end get
    
 })
 

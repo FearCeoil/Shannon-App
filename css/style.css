@@ -3,14 +3,21 @@
     color:black;
     background-color: yellow;
     padding:10px;
+     padding:5px;
+    text-align:center;
 }
 #orange{
     color:black;
-    background-color: orangered;
+    background-color: orange;
     padding:10px;
+     padding:5px;
+    text-align:center;
 }
 #red{
     color:black;
     background-color: red;
-    padding:10px;
+    padding:5px;
+    text-align:center;
+    
+   
 }
