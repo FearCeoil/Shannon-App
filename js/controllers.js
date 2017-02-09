@@ -101,9 +101,10 @@ function warning(data) {
 
 angular.module('starter.controllers', [])
 
-.controller('LoughReeCtrl', function ($scope,Weather, Beaufort, Hourly) {
+.controller('LoughReeCtrl', function ($scope,Weather, Beaufort, Hourly,$ionicLoading) {
+    $ionicLoading.show();
     Weather.all().success(function (response) {
-
+       
             var location = response.city.name;
             var currentWeather = capitalize(response.list[0].weather[0].description);
             var currentTemp = response.list[0].temp.day.toFixed(0);
@@ -173,7 +174,7 @@ angular.module('starter.controllers', [])
                     });
 
                 });
-
+          $ionicLoading.hide();
      });//end get
    
 })
