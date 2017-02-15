@@ -1,49 +1,18 @@
 ﻿<ion-view view-title="Home">
     <ion-content class="padding">
-     
-        <ion-list>
-            <ion-item class="item-remove-animate item-icon-right" ui-sref="weather">
-            <h2>Inland lake weather </h2>
-            <i class="icon ion-chevron-right icon-accessory"></i>
-            </ion-item>
 
-            <ion-item class="item-remove-animate item-icon-right" ui-sref="journeyTime">
-                <h2>Journey time calculator</h2>
-                <i class="icon ion-chevron-right icon-accessory"></i>
-            </ion-item>
-
-            <ion-item class="item-remove-animate item-icon-right" ui-sref="checkList">
-                <h2>Pre departure check list</h2>
-                <i class="icon ion-chevron-right icon-accessory"></i>
-            </ion-item>
-
-            <ion-item class="item-remove-animate item-icon-right" ui-sref="Info">
-                <h2>Info</h2>
-                <i class="icon ion-chevron-right icon-accessory"></i>
-            </ion-item>
-        </ion-list>
-       
-         <div class="list card">
-            <div class="item item-divider">News</div>
-            <div class="item item-body">
-               
-                 <a class="item item-thumbnail-left" href="#">
-                    <img src="cover.jpg">
-                    <h2>Marine Notices</h2>
-                    <p>Blah blah....</p>
-                </a>
-                <a class="item item-thumbnail-left" href="#">
-                    <img src="cover.jpg">
-                    <h2>July Rally..Lets go!</h2>
-                    <p>The shannon rally will take place on the...</p>
-                </a>
-                <a class="item item-thumbnail-left" href="#">
-                    <img src="cover.jpg">
-                    <h2>Lough Ree islands to be made acessible</h2>
-                    <p>Minister for tourism and transport Mich...</p>
-                </a>
-
-            </div>
+        <div class="list card">
+            <ion-list>
+                <ion-item class="item icon ion-ios-information" ng-repeat="item in data">
+                    <h2>{{item.title}}</h2>
+                    <p>{{item.body}}</p>
+                    <a href="{{item.url}}" target="_blank" onclick="window.open({{item.url}}, '_blank', 'location=yes'); return false;">Here</a>
+                </ion-item>
+            </ion-list>
         </div>
     </ion-content>
 </ion-view> 
+
+<!--<ion-item>
+         <a href="http://we40team26.webelevate.net/blog/api/node/" target="_blank" onclick="window.open('http://we40team26.webelevate.net/blog/api/node/', '_blank', 'location=yes'); return false;">Here</a>
+     </ion-item>-->

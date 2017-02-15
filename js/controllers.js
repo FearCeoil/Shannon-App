@@ -101,113 +101,123 @@ function warning(data) {
 
 angular.module('starter.controllers', [])
 
-.controller('LoughReeCtrl', function ($scope,Weather, Beaufort, Hourly,$ionicLoading) {
+.controller('AppCtrl', function($scope) {
+
+    $scope.data = [
+   { title: "story 1", body: "something is gona happen in the...", url: "http://www.etondigital.com/how-to-develop-a-hybrid-app/" },
+   { title: "story 2", body: "This must be the end for......", url: "https://www.rte.ie/news/" },
+   { title: "story 3", body: "Home is where the heart is......", url: "http://we40team26.webelevate.net/blog/" }
+    ];
+  
+})
+
+.controller('LoughReeCtrl', function ($scope, Weather, Beaufort, Hourly, $ionicLoading) {
     $ionicLoading.show();
     Weather.all().success(function (response) {
-       
-            var location = response.city.name;
-            var currentWeather = capitalize(response.list[0].weather[0].description);
-            var currentTemp = response.list[0].temp.day.toFixed(0);
-            var wind = toKPH(response.list[0].speed);
-            var windb = toBeauford(toKPH(response.list[0].speed));
-            var windDeg = windDir(response.list[0].deg);
-            var weatherIcon = response.list[0].weather[0].icon;
-           // var iconSrc = "http://openweathermap.org/img/w/" + icon + ".png";
-            var weatherIconSrc = "img/weatherIcons/" + weatherIcon + ".png";
-            var windDirIconSrc = "img/windIcons/" + windDeg + ".png";
+
+        var location = response.city.name;
+        var currentWeather = capitalize(response.list[0].weather[0].description);
+        var currentTemp = response.list[0].temp.day.toFixed(0);
+        var wind = toKPH(response.list[0].speed);
+        var windb = toBeauford(toKPH(response.list[0].speed));
+        var windDeg = windDir(response.list[0].deg);
+        var weatherIcon = response.list[0].weather[0].icon;
+        // var iconSrc = "http://openweathermap.org/img/w/" + icon + ".png";
+        var weatherIconSrc = "img/weatherIcons/" + weatherIcon + ".png";
+        var windDirIconSrc = "img/windIcons/" + windDeg + ".png";
 
 
-            $scope.location = location;
-            $scope.weather = currentWeather;
-            $scope.temp = currentTemp;
-            $scope.windSpeed = wind;
-            $scope.windDirIcon = windDirIconSrc;
-            $scope.weatherIcon = weatherIconSrc;
-            $scope.windDir = windDeg;
+        $scope.location = location;
+        $scope.weather = currentWeather;
+        $scope.temp = currentTemp;
+        $scope.windSpeed = wind;
+        $scope.windDirIcon = windDirIconSrc;
+        $scope.weatherIcon = weatherIconSrc;
+        $scope.windDir = windDeg;
 
-            if(warning(wind) == 1){
-                $scope.show = 'msg1';
-            } else if (warning(wind) == 2) {
-                $scope.show = 'msg2';
-            } else if (warning(wind) == 3) {
-                $scope.show = 'msg3';
-            } else {
-                $scope.show = '';
-            }
-
-            
-      
-                Beaufort.all().success(function (response) {
-                        var pos = windb;
-                        $scope.beaufortNum = pos;
-                        $scope.beaufortDes = response[pos].description;
-                        $scope.beaufortCon = response[pos].conditions;
-                });
-
-                Hourly.all().success(function (hw) {
-                    $scope.dt = sub(hw.list[0].dt_txt);
-                    $scope.dt1 = sub(hw.list[1].dt_txt);
-                    $scope.dt2 = sub(hw.list[2].dt_txt);
-                    $scope.dt3 = sub(hw.list[3].dt_txt);
-                    $scope.dt4 = sub(hw.list[4].dt_txt);
-
-                    $scope.ws = toKPH(hw.list[0].wind.speed);
-                    $scope.ws1 = toKPH(hw.list[1].wind.speed);
-                    $scope.ws2 = toKPH(hw.list[2].wind.speed);
-                    $scope.ws3 = toKPH(hw.list[3].wind.speed);
-                    $scope.ws4 = toKPH(hw.list[4].wind.speed);
-
-                    $scope.wd = windDir(hw.list[0].wind.deg);
-                    $scope.wd1 = windDir(hw.list[1].wind.deg);
-                    $scope.wd2 = windDir(hw.list[2].wind.deg);
-                    $scope.wd3 = windDir(hw.list[3].wind.deg);
-                    $scope.wd4 = windDir(hw.list[4].wind.deg);
+        if (warning(wind) == 1) {
+            $scope.show = 'msg1';
+        } else if (warning(wind) == 2) {
+            $scope.show = 'msg2';
+        } else if (warning(wind) == 3) {
+            $scope.show = 'msg3';
+        } else {
+            $scope.show = '';
+        }
 
 
-                    Beaufort.all().success(function (response) {
-                        $scope.b = toBeauford(toKPH(hw.list[0].wind.speed));
-                        $scope.b1 = toBeauford(toKPH(hw.list[1].wind.speed));
-                        $scope.b2 = toBeauford(toKPH(hw.list[2].wind.speed));
-                        $scope.b3 = toBeauford(toKPH(hw.list[3].wind.speed));
-                        $scope.b4 = toBeauford(toKPH(hw.list[4].wind.speed));
 
-                    });
+        Beaufort.all().success(function (response) {
+            var pos = windb;
+            $scope.beaufortNum = pos;
+            $scope.beaufortDes = response[pos].description;
+            $scope.beaufortCon = response[pos].conditions;
+        });
 
-                });
-          $ionicLoading.hide();
-     });//end get
-   
+        Hourly.all().success(function (hw) {
+            $scope.dt = sub(hw.list[0].dt_txt);
+            $scope.dt1 = sub(hw.list[1].dt_txt);
+            $scope.dt2 = sub(hw.list[2].dt_txt);
+            $scope.dt3 = sub(hw.list[3].dt_txt);
+            $scope.dt4 = sub(hw.list[4].dt_txt);
+
+            $scope.ws = toKPH(hw.list[0].wind.speed);
+            $scope.ws1 = toKPH(hw.list[1].wind.speed);
+            $scope.ws2 = toKPH(hw.list[2].wind.speed);
+            $scope.ws3 = toKPH(hw.list[3].wind.speed);
+            $scope.ws4 = toKPH(hw.list[4].wind.speed);
+
+            $scope.wd = windDir(hw.list[0].wind.deg);
+            $scope.wd1 = windDir(hw.list[1].wind.deg);
+            $scope.wd2 = windDir(hw.list[2].wind.deg);
+            $scope.wd3 = windDir(hw.list[3].wind.deg);
+            $scope.wd4 = windDir(hw.list[4].wind.deg);
+
+
+            Beaufort.all().success(function (response) {
+                $scope.b = toBeauford(toKPH(hw.list[0].wind.speed));
+                $scope.b1 = toBeauford(toKPH(hw.list[1].wind.speed));
+                $scope.b2 = toBeauford(toKPH(hw.list[2].wind.speed));
+                $scope.b3 = toBeauford(toKPH(hw.list[3].wind.speed));
+                $scope.b4 = toBeauford(toKPH(hw.list[4].wind.speed));
+
+            });
+
+        });
+        $ionicLoading.hide();
+    });//end get
+
 })
 
 .controller('journeyCtrl', function ($scope) {
     $scope.cruiseTime = "";
     $scope.form = { start: "Killaloe", des: "Enniskillin" }
 
-    var Killaloe = [43,38,34,31,28,21,20,19,17,15,14,11,9,7,4,2,0];
-    var Scarriff = [43,38,34,31,28,21,20,18,17,15,14,11,9,7,4,0,2];
-    var Portummna = [39,34,30,27,24,17,16,14,13,11,10,7,5,3,0,4,4];
-    var Banagher = [36,31,27,24,21,14,13,11,0,8,7,4,2,0,3,7,7];
-    var Shannonbridge = [34,29,25,22,19,12,11,9,10,8,7,4,2,0,2,5,9,9];
-    var Athlone = [32,27,23,20,17,10,9,7,6,4,2,0,2,4,7,11,11];
-    var Lanesborough = [29,24,20,16,14,7,6,4,3,1,0,2,4,7,10,14,14];
-    var Tarmonbarry = [28,23,19,15,13,6,5,3,2,0,1,4,7,8,11,15,15];
-    var Roosky = [26,21,17,14,11,4,3,1,0,2,3,6,8,10,13,17,17];
-    var Dromod = [25,20,16,13,10,3,2,0,1,3,4,7,9,11,14,18,19];
-    var Carrick = [23,18,14,11,8,1,0,2,3,5,6,9,11,13,16,20,20];
-    var Leitrim = [22,16,13,10,7,0,1,3,4,6,7,10,12,14,17,21,21];
-    var Ballinamore = [15,10,6,3,0,7,8,10,11,13,14,17,19,21,24,28,28];
-    var Ballyconnell = [12,7,3,0,3,10,11,13,14,15,16,20,22,24,27,31,31];
-    var Belturbet = [9,4,0,3,6,13,14,16,17,19,20,23,25,27,30,34,34];
-    var Enniskillin = [5,0,4,7,10,16,18,20,21,23,24,27,29,31,34,38,38];
-    var Beleek = [0,5,9,12,15,22,23,25,26,28,29,32,34,36,39,43,43];
+    var Killaloe = [43, 38, 34, 31, 28, 21, 20, 19, 17, 15, 14, 11, 9, 7, 4, 2, 0];
+    var Scarriff = [43, 38, 34, 31, 28, 21, 20, 18, 17, 15, 14, 11, 9, 7, 4, 0, 2];
+    var Portummna = [39, 34, 30, 27, 24, 17, 16, 14, 13, 11, 10, 7, 5, 3, 0, 4, 4];
+    var Banagher = [36, 31, 27, 24, 21, 14, 13, 11, 0, 8, 7, 4, 2, 0, 3, 7, 7];
+    var Shannonbridge = [34, 29, 25, 22, 19, 12, 11, 9, 10, 8, 7, 4, 2, 0, 2, 5, 9, 9];
+    var Athlone = [32, 27, 23, 20, 17, 10, 9, 7, 6, 4, 2, 0, 2, 4, 7, 11, 11];
+    var Lanesborough = [29, 24, 20, 16, 14, 7, 6, 4, 3, 1, 0, 2, 4, 7, 10, 14, 14];
+    var Tarmonbarry = [28, 23, 19, 15, 13, 6, 5, 3, 2, 0, 1, 4, 7, 8, 11, 15, 15];
+    var Roosky = [26, 21, 17, 14, 11, 4, 3, 1, 0, 2, 3, 6, 8, 10, 13, 17, 17];
+    var Dromod = [25, 20, 16, 13, 10, 3, 2, 0, 1, 3, 4, 7, 9, 11, 14, 18, 19];
+    var Carrick = [23, 18, 14, 11, 8, 1, 0, 2, 3, 5, 6, 9, 11, 13, 16, 20, 20];
+    var Leitrim = [22, 16, 13, 10, 7, 0, 1, 3, 4, 6, 7, 10, 12, 14, 17, 21, 21];
+    var Ballinamore = [15, 10, 6, 3, 0, 7, 8, 10, 11, 13, 14, 17, 19, 21, 24, 28, 28];
+    var Ballyconnell = [12, 7, 3, 0, 3, 10, 11, 13, 14, 15, 16, 20, 22, 24, 27, 31, 31];
+    var Belturbet = [9, 4, 0, 3, 6, 13, 14, 16, 17, 19, 20, 23, 25, 27, 30, 34, 34];
+    var Enniskillin = [5, 0, 4, 7, 10, 16, 18, 20, 21, 23, 24, 27, 29, 31, 34, 38, 38];
+    var Beleek = [0, 5, 9, 12, 15, 22, 23, 25, 26, 28, 29, 32, 34, 36, 39, 43, 43];
 
-    var des = ["Beleek","Enniskillin","Belturbet","Ballyconnell","Ballinamore","Leitrim",
-               "Carrick on Shannon","Dromod","Roosky","Tarmonbarry","Lanesborough",
-               "Athlone","Shannonbridge","Banagher","Portummna", "Scarriff", "Killaloe"];
+    var des = ["Beleek", "Enniskillin", "Belturbet", "Ballyconnell", "Ballinamore", "Leitrim",
+               "Carrick on Shannon", "Dromod", "Roosky", "Tarmonbarry", "Lanesborough",
+               "Athlone", "Shannonbridge", "Banagher", "Portummna", "Scarriff", "Killaloe"];
     var start;
-   
+
     $scope.onSubmit = function () {
-              
+
         if ($scope.form.start == "Killaloe") {
             start = Killaloe;
         } else if ($scope.form.start == "Scarriff") {
@@ -242,13 +252,12 @@ angular.module('starter.controllers', [])
             start = Enniskillin;
         } else if ($scope.form.start == "Beleek") {
             start = Beleek;
-        } 
-     
-        $scope.cruiseTime = " The average cruising time between " + $scope.form.start + " and " + $scope.form.des + " is " + start[des.indexOf($scope.form.des)] +" hours";
-       
+        }
+
+        $scope.cruiseTime = " The average cruising time between " + $scope.form.start + " and " + $scope.form.des + " is " + start[des.indexOf($scope.form.des)] + " hours";
+
     }
 })
-
 
 
 
