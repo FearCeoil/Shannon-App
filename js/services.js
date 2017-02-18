@@ -4,21 +4,21 @@ var hourly = 'http://api.openweathermap.org/data/2.5/forecast?lat=53.474880&lon=
 var blog = 'http://we40team26.webelevate.net/blog/api/node/';
 angular.module('starter.services', [])
 
-.factory('Weather', function ($http, $rootScope, $stateParams) {
+.factory('Weather', function ($http, $rootScope) {
 
     return {
         all: function () {
-            return $http.get(forcast, { params: { user_id: $rootScope.session } })
+            return $http.get(forcast)
         }
 
     };
 })
 
-.factory('Beaufort', function ($http, $rootScope, $stateParams) {
+.factory('Beaufort', function ($http, $rootScope) {
 
     return {
         all: function () {
-            return $http.get('js/data.json', { params: { user_id: $rootScope.session } })
+            return $http.get('js/data.json')
         }
 
     };
@@ -28,7 +28,7 @@ angular.module('starter.services', [])
 
     return {
         all: function () {
-            return $http.get(hourly, { params: { user_id: $rootScope.session } })
+            return $http.get(hourly)
         }
 
     };
@@ -38,7 +38,7 @@ angular.module('starter.services', [])
 
     return {
         all: function () {
-            return $http.get('http://we40team26.webelevate.net/blog/api/node/', { params: { user_id: $rootScope.session } })
+            return  $http.get(blog)
         }
 
     };

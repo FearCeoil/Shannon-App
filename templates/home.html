@@ -1,18 +1,9 @@
 ﻿<ion-view view-title="Home">
     <ion-content class="padding">
-
-        <div class="list card">
-            <ion-list>
-                <ion-item class="item icon ion-ios-information" ng-repeat="item in data">
-                    <h2>{{item.title}}</h2>
-                    <p>{{item.body}}</p>
-                    <a href="{{item.url}}" target="_blank" onclick="window.open({{item.url}}, '_blank', 'location=yes'); return false;">Here</a>
-                </ion-item>
-            </ion-list>
-        </div>
+        <div class="list">
+            <a class="item" ng-repeat="item in nodes" ng-click="browse(item.uri.replace('api/', ''))">
+                <h2>{{item.title}}</h2>
+            </a>
+        </div>    
     </ion-content>
 </ion-view> 
-
-<!--<ion-item>
-         <a href="http://we40team26.webelevate.net/blog/api/node/" target="_blank" onclick="window.open('http://we40team26.webelevate.net/blog/api/node/', '_blank', 'location=yes'); return false;">Here</a>
-     </ion-item>-->

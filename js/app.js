@@ -41,14 +41,15 @@ angular.module('starter', ['ionic', 'starter.controllers','starter.services'])
     controller: 'AppCtrl'
   })
 
-      .state('app.home', {
-        url: '/home',
-        views: {
-          'menuContent': {
-            templateUrl: 'templates/home.html'
-          }
-        }
-      })
+ .state('app.home', {
+    url: '/home',
+    views: {
+      'menuContent': {
+       templateUrl: 'templates/home.html',
+       controller: ''
+       }
+    }
+ })
 
       .state('app.weather', {
           url: '/weather',

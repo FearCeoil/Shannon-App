@@ -101,14 +101,25 @@ function warning(data) {
 
 angular.module('starter.controllers', [])
 
-.controller('AppCtrl', function($scope) {
+.controller('AppCtrl', function ($scope, Blog) {
 
-    $scope.data = [
-   { title: "story 1", body: "something is gona happen in the...", url: "http://www.etondigital.com/how-to-develop-a-hybrid-app/" },
-   { title: "story 2", body: "This must be the end for......", url: "https://www.rte.ie/news/" },
-   { title: "story 3", body: "Home is where the heart is......", url: "http://we40team26.webelevate.net/blog/" }
-    ];
-  
+    Blog.all().success(function (data) {
+        console.log("got it")
+
+        $scope.nodes = data;
+
+        $scope.browse = function (v) {
+            window.open(v, "_system", "location=yes");
+        };
+    }).error(function (data) {
+        console.log("ERROR: " + data);
+
+    });
+
+})
+
+.controller('HomeCtrl', function ($scope, $http) {
+
 })
 
 .controller('LoughReeCtrl', function ($scope, Weather, Beaufort, Hourly, $ionicLoading) {
