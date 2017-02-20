@@ -75,7 +75,7 @@ angular.module('starter', ['ionic', 'starter.controllers','starter.services'])
         views: {
             'menuContent': {
                 templateUrl: 'templates/loughAllen.html',
-                controller: ''
+                controller: 'LoughAllenCtrl'
             }
         }
     })
@@ -85,7 +85,7 @@ angular.module('starter', ['ionic', 'starter.controllers','starter.services'])
         views: {
             'menuContent': {
                 templateUrl: 'templates/loughDerg.html',
-                controller: ''
+                controller: 'LoughDergCtrl'
             }
         }
     })
@@ -100,6 +100,16 @@ angular.module('starter', ['ionic', 'starter.controllers','starter.services'])
         }
       }
     })
+
+ .state('app.checkList', {
+     url: '/checkList',
+     views: {
+         'menuContent': {
+             templateUrl: 'templates/checkList.html',
+             controller: ''
+         }
+     }
+ })
 
       .state('app.Info', {
           url: '/Info',

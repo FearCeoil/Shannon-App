@@ -1,22 +1,22 @@
 ﻿<ion-view view-title="Lough Ree">
     <ion-content class="padding">
         <div class="card">
-            <div class="item item-divider">Today</div>
+            <div class="item item-divider" style="text-align:center;"><strong>Today</strong></div>
             <div class="item item-divider" ng-show="show == 'msg1'" id="yellow">There is a status Yellow warning in effect!</div>
             <div class="item item-divider" ng-show="show == 'msg2'" id="orange">There is a status Orange warning in effect!</div>
             <div class="item item-divider" ng-show="show == 'msg3'" id="red">There is a status Red warning in effect!</div>
                
-            <div class="item item-body" style="padding:0px;">
+            <div class="item item-body" style="padding-top:10px;">
                 <div class="row" style="text-align:center;">
                     <div class="col" style=""><img src="{{weatherIcon}}" class="weatherIcon"/><h2>{{weather}}</h2></div>
                     <div class="col" style=""><img src="{{windDirIcon}}" class="weatherIcon" /><h2>{{windDir}}</h2></div>
-                    <div class="col" style=""><img src="img/tempIcons/temp3.png" height="50" width="28" /><h2>{{temp}}  &#8451</h2></div>
+                    <div class="col" style=""><img src="img/tempIcons/temp3.png" height="40" width="25" /><h2>{{temp}}  &#8451</h2></div>
                     <div class="col" style=""><img src="img/windIcons/wind.png" class="weatherIcon" /><h2>{{windSpeed}} Kph</h2></div>
                 </div>
             </div>
             <div class="item item-divider">Beaufort Scale</div>
 
-            <div class="row">
+            <div class="row" style="background-color:#f7faff;">
                 <div class="col">
                     <strong>Wind:</strong> Force {{beaufortNum}}<br />
                     <strong>Description:</strong> {{beaufortDes}}<br />
@@ -70,23 +70,23 @@
             </div>
         </div>
         <div class="list card">
-            <div class="item item-divider">{{day1}}</div>
-            <div class="item item-body" style="padding:0px;">
+            <div class="item item-divider" style="text-align:center;"><strong>Tomorrow</strong></div>
+            <div class="item item-body" style="padding-top:10px;">
                 <div class="row" style="text-align:center;">
                     <div class="col" style=""><img src="{{weatherIcon1}}" class="weatherIcon" /><h2>{{weather1}}</h2></div>
                     <div class="col" style=""><img src="{{windDirIcon1}}" class="weatherIcon" /><h2>{{windDir1}}</h2></div>
-                    <div class="col" style=""><img src="img/tempIcons/temp3.png" height="50" width="28" /><h2>{{temp1}}  &#8451</h2></div>
+                    <div class="col" style=""><img src="img/tempIcons/temp3.png" height="40" width="25" /><h2>{{temp1}}  &#8451</h2></div>
                     <div class="col" style=""><img src="img/windIcons/wind.png" class="weatherIcon" /><h2>{{windSpeed1}} Kph</h2></div>
                 </div>
             </div>
         </div>
         <div class="list card">
-            <div class="item item-divider">{{day2}}</div>
-            <div class="item item-body" style="padding:0px;">
+            <div class="item item-divider" style="text-align:center;"><strong>{{day2}}</strong></div>
+            <div class="item item-body" style="padding-top:10px;">
                 <div class="row" style="text-align:center;">
                     <div class="col" style=""><img src="{{weatherIcon2}}" class="weatherIcon" /><h2>{{weather2}}</h2></div>
                     <div class="col" style=""><img src="{{windDirIcon2}}" class="weatherIcon" /><h2>{{windDir2}}</h2></div>
-                    <div class="col" style=""><img src="img/tempIcons/temp3.png" height="50" width="28" /><h2>{{temp2}}  &#8451</h2></div>
+                    <div class="col" style=""><img src="img/tempIcons/temp3.png" height="40" width="25" /><h2>{{temp2}}  &#8451</h2></div>
                     <div class="col" style=""><img src="img/windIcons/wind.png" class="weatherIcon" /><h2>{{windSpeed2}} Kph</h2></div>
                 </div>
             </div>

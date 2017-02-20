@@ -14,22 +14,31 @@
 
   <ion-side-menu side="left">
     <ion-header-bar class="bar-stable">
-      <h1 class="title">Left</h1>
+      <h1 class="title">Menu</h1>
     </ion-header-bar>
     <ion-content>
       <ion-list>
-        <ion-item menu-close  href="#/app/home">
-          Home
-        </ion-item>
-        <ion-item menu-close href="#/app/weather">
-          Inland Lake Weather
-        </ion-item>
-        <ion-item menu-close href="#/app/journeyTime">
-          Journey Time calculator
-        </ion-item>
-        <ion-item menu-close href="#/app/Info">
-          Info
-        </ion-item>
+          <a  menu-close class="item item-icon-left" href="#/app/home">
+              <i class="icon ion-android-home"></i>
+              Home
+          </a>
+          <a menu-close class="item item-icon-left" href="#/app/weather">
+              <i class="icon ion-android-cloud-circle"></i>
+              Inland Lake Weather
+          </a>
+          <a menu-close class="item item-icon-left" href="#/app/journeyTime">
+              <i class="icon ion-android-boat"></i>
+              Journey Time calculator
+          </a>
+          <a menu-close class="item item-icon-left" href="#/app/checkList">
+              <i class="icon ion-android-list"></i>
+              Check List
+          </a>
+          <a menu-close class="item item-icon-left" href="#/app/Info">
+              <i class="icon ion-android-alert"></i>
+              Info
+          </a>
+   
       </ion-list>
     </ion-content>
   </ion-side-menu>

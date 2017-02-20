@@ -121,7 +121,7 @@ function Day(data) {
 angular.module('starter.controllers', [])
 
 .controller('AppCtrl', function ($scope, Blog, $ionicLoading) {
-    $ionicLoading.show();
+   // $ionicLoading.show();
     Blog.all().success(function (data) {
         console.log("got it")
 
@@ -137,13 +137,13 @@ angular.module('starter.controllers', [])
 
 })
 
-.controller('HomeCtrl', function ($scope, $http) {
+.controller('HomeCtrl', function ($scope) {
 
 })
 
-.controller('LoughReeCtrl', function ($scope, Weather, Beaufort, Hourly, $ionicLoading) {
+.controller('LoughReeCtrl', function ($scope, loughReeWeather, Beaufort, Hourly, $ionicLoading) {
     $ionicLoading.show();
-    Weather.all().success(function (response) {
+    loughReeWeather.all().success(function (response) {
         //Current Weather
         var date = new Date(response.list[0].dt * 1000);
         var day = Day(date.getDay());      
@@ -257,6 +257,14 @@ angular.module('starter.controllers', [])
         $ionicLoading.hide();
     });//end get
 
+})
+
+.controller('LoughAllenCtrl', function ($scope,loughAllenWeather, Beaufort, Hourly, $ionicLoading) {
+    $scope.test = "Lough Allen";
+})
+
+.controller('LoughDergCtrl', function ($scope,loughDergWeather, Beaufort, Hourly, $ionicLoading) {
+    $scope.test = "Lough Derg";
 })
 
 .controller('journeyCtrl', function ($scope) {
