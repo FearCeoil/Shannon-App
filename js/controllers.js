@@ -99,15 +99,34 @@ function warning(data) {
     return data;
 }
 
+function Day(data) {
+    if (data === 0) {
+        data = "Sunday";
+    } else if (data === 1) {
+        data = "Monday";
+    } else if (data === 2) {
+        data = "Tuesday";
+    } else if (data === 3) {
+        data = "Wednesday";
+    } else if (data === 4) {
+        data = "Thursday";
+    } else if (data === 5) {
+        data = "Friday";
+    } else {
+        data = "Saturday";
+    }
+    return data;
+}
+
 angular.module('starter.controllers', [])
 
-.controller('AppCtrl', function ($scope, Blog) {
-
+.controller('AppCtrl', function ($scope, Blog, $ionicLoading) {
+    $ionicLoading.show();
     Blog.all().success(function (data) {
         console.log("got it")
 
         $scope.nodes = data;
-
+        $ionicLoading.hide();
         $scope.browse = function (v) {
             window.open(v, "_system", "location=yes");
         };
@@ -125,7 +144,9 @@ angular.module('starter.controllers', [])
 .controller('LoughReeCtrl', function ($scope, Weather, Beaufort, Hourly, $ionicLoading) {
     $ionicLoading.show();
     Weather.all().success(function (response) {
-
+        //Current Weather
+        var date = new Date(response.list[0].dt * 1000);
+        var day = Day(date.getDay());      
         var location = response.city.name;
         var currentWeather = capitalize(response.list[0].weather[0].description);
         var currentTemp = response.list[0].temp.day.toFixed(0);
@@ -133,10 +154,8 @@ angular.module('starter.controllers', [])
         var windb = toBeauford(toKPH(response.list[0].speed));
         var windDeg = windDir(response.list[0].deg);
         var weatherIcon = response.list[0].weather[0].icon;
-        // var iconSrc = "http://openweathermap.org/img/w/" + icon + ".png";
         var weatherIconSrc = "img/weatherIcons/" + weatherIcon + ".png";
         var windDirIconSrc = "img/windIcons/" + windDeg + ".png";
-
 
         $scope.location = location;
         $scope.weather = currentWeather;
@@ -145,6 +164,46 @@ angular.module('starter.controllers', [])
         $scope.windDirIcon = windDirIconSrc;
         $scope.weatherIcon = weatherIconSrc;
         $scope.windDir = windDeg;
+
+        //Tomorrows Weather
+        var date1 = new Date(response.list[1].dt * 1000);
+        var day1 = Day(date1.getDay());
+        var currentWeather1 = capitalize(response.list[1].weather[0].description);
+        var currentTemp1 = response.list[1].temp.day.toFixed(0);
+        var wind1 = toKPH(response.list[1].speed);
+        var windb1 = toBeauford(toKPH(response.list[0].speed));
+        var windDeg1 = windDir(response.list[1].deg);
+        var weatherIcon1 = response.list[1].weather[0].icon;
+        var weatherIconSrc1 = "img/weatherIcons/" + weatherIcon1 + ".png";
+        var windDirIconSrc1 = "img/windIcons/" + windDeg1 + ".png";
+
+        $scope.day1 = day1;
+        $scope.weather1 = currentWeather1;
+        $scope.temp1 = currentTemp1;
+        $scope.windSpeed1 = wind1;
+        $scope.windDirIcon1 = windDirIconSrc1;
+        $scope.weatherIcon1 = weatherIconSrc1;
+        $scope.windDir1 = windDeg1;
+
+        //Weather 2 days from now
+        var date2 = new Date(response.list[2].dt * 1000);
+        var day2 = Day(date2.getDay());
+        var currentWeather2 = capitalize(response.list[2].weather[0].description);
+        var currentTemp2 = response.list[2].temp.day.toFixed(0);
+        var wind2 = toKPH(response.list[2].speed);
+        var windb2 = toBeauford(toKPH(response.list[2].speed));
+        var windDeg2 = windDir(response.list[2].deg);
+        var weatherIcon2 = response.list[2].weather[0].icon;
+        var weatherIconSrc2 = "img/weatherIcons/" + weatherIcon2 + ".png";
+        var windDirIconSrc2 = "img/windIcons/" + windDeg2 + ".png";
+
+        $scope.day2 = day2;
+        $scope.weather2 = currentWeather2;
+        $scope.temp2 = currentTemp2;
+        $scope.windSpeed2 = wind2;
+        $scope.windDirIcon2 = windDirIconSrc2;
+        $scope.weatherIcon2 = weatherIconSrc2;
+        $scope.windDir2 = windDeg2;
 
         if (warning(wind) == 1) {
             $scope.show = 'msg1';
