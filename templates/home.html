@@ -6,6 +6,7 @@
                 <a class="item item-text-wrap item-icon-right" ng-repeat="item in nodes" ng-click="browse(item.uri.replace('api/', ''))">
                     <i class="icon ion-ios-arrow-right"></i>
                      <h2>{{item.title}}</h2>
+                    <p>Created: {{item.created * 1000 | date: 'medium'}}</p>
                 </a>
             </div>
             <div class="item item-divider" style="text-align:center;"> <p>Information supplied by http://www.dttas.ie</p></div>
