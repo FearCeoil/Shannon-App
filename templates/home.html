@@ -1,13 +1,14 @@
 ﻿<ion-view view-title="Home">
     <ion-content class="padding">
         <div class="card">
-            <div class="item item-divider">News and Marine Notices</div>
+            <div class="item item-divider" style="text-align:center;">News and Marine Notices</div>
             <div class="list">
-                <a class="item item-text-wrap" ng-repeat="item in nodes" ng-click="browse(item.uri.replace('api/', ''))">
-                    <h2>{{item.title}}</h2>
+                <a class="item item-text-wrap item-icon-left" ng-repeat="item in nodes" ng-click="browse(item.uri.replace('api/', ''))">
+                    <i class="icon ion-chevron-right"></i>
+                     <h2>{{item.title}}</h2>
                 </a>
             </div>
-            <div class="item item-divider"></div>
+            <div class="item item-divider" style="text-align:center;"> <p>Information supplied by http://www.dttas.ie</p></div>
         </div>
 </ion-content>
 </ion-view> 
