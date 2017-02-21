@@ -121,15 +121,15 @@ function Day(data) {
 angular.module('starter.controllers', [])
 
 .controller('AppCtrl', function ($scope, Blog, $ionicLoading) {
-   // $ionicLoading.show();
+    $ionicLoading.show();
     Blog.all().success(function (data) {
         console.log("got it")
 
         $scope.nodes = data;
-        $ionicLoading.hide();
         $scope.browse = function (v) {
             window.open(v, "_system", "location=yes");
         };
+        $ionicLoading.hide();
     }).error(function (data) {
         console.log("ERROR: " + data);
 
