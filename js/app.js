@@ -122,6 +122,16 @@ angular.module('starter', ['ionic', 'starter.controllers','starter.services'])
           }
       })
 
+     .state('app.error', {
+         url: '/error',
+         views: {
+             'menuContent': {
+                 templateUrl: 'templates/error.html',
+                 controller: ''
+             }
+         }
+     })
+
  
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/app/home');
