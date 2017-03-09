@@ -132,7 +132,6 @@ angular.module('starter.controllers', [])
         $ionicLoading.hide();
         }).error(function (data) {
             console.log("ERROR: " + data);
-            alert("error");
             $state.go("app.error");
     });
 
@@ -143,7 +142,7 @@ angular.module('starter.controllers', [])
 })
 
 .controller('LoughReeCtrl', function ($scope, loughReeWeather, Beaufort, Hourly, $ionicLoading, $location) {
-    $ionicLoading.show();
+    //$ionicLoading.show();
     loughReeWeather.all().success(function (response) {
         //Current Weather
         var date = new Date(response.list[0].dt * 1000);
@@ -255,8 +254,8 @@ angular.module('starter.controllers', [])
                 });
 
             });
-                $ionicLoading.hide();
-        }).error(function () {
+                //$ionicLoading.hide();
+    }).error(function () {
             $state.go("app.error");
     });
 
