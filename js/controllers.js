@@ -120,7 +120,7 @@ function Day(data) {
 
 angular.module('starter.controllers', [])
 
-.controller('AppCtrl', function ($scope, Blog, $ionicLoading, $state) {
+.controller('AppCtrl', function ($scope, Blog, $ionicLoading, $state, $location) {
    //$ionicLoading.show();
     Blog.all().success(function (data) {
         console.log("got it")
@@ -131,7 +131,9 @@ angular.module('starter.controllers', [])
         };
         $ionicLoading.hide();
         }).error(function (data) {
-            console.log("ERROR: " + data);           
+            console.log("ERROR: " + data);
+            alert("error");
+            $state.go("app.error");
     });
 
 })
@@ -255,7 +257,7 @@ angular.module('starter.controllers', [])
             });
                 $ionicLoading.hide();
         }).error(function () {
-            $location.path("\error");
+            $state.go("app.error");
     });
 
 })
