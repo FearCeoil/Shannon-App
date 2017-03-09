@@ -28,6 +28,7 @@ angular.module('starter', ['ionic', 'starter.controllers','starter.services'])
             navigator.app.exitApp();
         }
     }
+
   });
 })
 
@@ -106,7 +107,7 @@ angular.module('starter', ['ionic', 'starter.controllers','starter.services'])
      views: {
          'menuContent': {
              templateUrl: 'templates/checkList.html',
-             controller: ''
+             controller: 'Checklist'
          }
      }
  })
@@ -120,6 +121,8 @@ angular.module('starter', ['ionic', 'starter.controllers','starter.services'])
               }
           }
       })
+
+ 
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/app/home');
 });

@@ -65,7 +65,6 @@ angular.module('starter.services', [])
 })
 
 
-
 ;
 
 

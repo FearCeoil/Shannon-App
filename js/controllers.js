@@ -120,8 +120,8 @@ function Day(data) {
 
 angular.module('starter.controllers', [])
 
-.controller('AppCtrl', function ($scope, Blog, $ionicLoading) {
-    $ionicLoading.show();
+.controller('AppCtrl', function ($scope, Blog, $ionicLoading, $state) {
+   //$ionicLoading.show();
     Blog.all().success(function (data) {
         console.log("got it")
 
@@ -130,9 +130,9 @@ angular.module('starter.controllers', [])
             window.open(v, "_system", "location=yes");
         };
         $ionicLoading.hide();
-    }).error(function (data) {
-        console.log("ERROR: " + data);
-
+        }).error(function (data) {
+            console.log("ERROR: " + data);
+           
     });
 
 })
@@ -224,38 +224,40 @@ angular.module('starter.controllers', [])
             $scope.beaufortCon = response[pos].conditions;
         });
 
-        Hourly.all().success(function (hw) {
-            $scope.dt = sub(hw.list[0].dt_txt);
-            $scope.dt1 = sub(hw.list[1].dt_txt);
-            $scope.dt2 = sub(hw.list[2].dt_txt);
-            $scope.dt3 = sub(hw.list[3].dt_txt);
-            $scope.dt4 = sub(hw.list[4].dt_txt);
+            Hourly.all().success(function (hw) {
+                $scope.dt = sub(hw.list[0].dt_txt);
+                $scope.dt1 = sub(hw.list[1].dt_txt);
+                $scope.dt2 = sub(hw.list[2].dt_txt);
+                $scope.dt3 = sub(hw.list[3].dt_txt);
+                $scope.dt4 = sub(hw.list[4].dt_txt);
 
-            $scope.ws = toKPH(hw.list[0].wind.speed);
-            $scope.ws1 = toKPH(hw.list[1].wind.speed);
-            $scope.ws2 = toKPH(hw.list[2].wind.speed);
-            $scope.ws3 = toKPH(hw.list[3].wind.speed);
-            $scope.ws4 = toKPH(hw.list[4].wind.speed);
+                $scope.ws = toKPH(hw.list[0].wind.speed);
+                $scope.ws1 = toKPH(hw.list[1].wind.speed);
+                $scope.ws2 = toKPH(hw.list[2].wind.speed);
+                $scope.ws3 = toKPH(hw.list[3].wind.speed);
+                $scope.ws4 = toKPH(hw.list[4].wind.speed);
 
-            $scope.wd = windDir(hw.list[0].wind.deg);
-            $scope.wd1 = windDir(hw.list[1].wind.deg);
-            $scope.wd2 = windDir(hw.list[2].wind.deg);
-            $scope.wd3 = windDir(hw.list[3].wind.deg);
-            $scope.wd4 = windDir(hw.list[4].wind.deg);
+                $scope.wd = windDir(hw.list[0].wind.deg);
+                $scope.wd1 = windDir(hw.list[1].wind.deg);
+                $scope.wd2 = windDir(hw.list[2].wind.deg);
+                $scope.wd3 = windDir(hw.list[3].wind.deg);
+                $scope.wd4 = windDir(hw.list[4].wind.deg);
 
 
-            Beaufort.all().success(function (response) {
-                $scope.b = toBeauford(toKPH(hw.list[0].wind.speed));
-                $scope.b1 = toBeauford(toKPH(hw.list[1].wind.speed));
-                $scope.b2 = toBeauford(toKPH(hw.list[2].wind.speed));
-                $scope.b3 = toBeauford(toKPH(hw.list[3].wind.speed));
-                $scope.b4 = toBeauford(toKPH(hw.list[4].wind.speed));
+                Beaufort.all().success(function (response) {
+                    $scope.b = toBeauford(toKPH(hw.list[0].wind.speed));
+                    $scope.b1 = toBeauford(toKPH(hw.list[1].wind.speed));
+                    $scope.b2 = toBeauford(toKPH(hw.list[2].wind.speed));
+                    $scope.b3 = toBeauford(toKPH(hw.list[3].wind.speed));
+                    $scope.b4 = toBeauford(toKPH(hw.list[4].wind.speed));
+
+                });
 
             });
-
-        });
-        $ionicLoading.hide();
-    });//end get
+                $ionicLoading.hide();
+        }).error(function () {
+        alert("No Network!");
+    });
 
 })
 
@@ -337,6 +339,13 @@ angular.module('starter.controllers', [])
     }
 })
 
+.controller('Checklist', function ($scope, loughDergWeather, Beaufort, Hourly, $ionicLoading) {
+    $scope.items = [
+        "Fuel",
+        "Water",
+        "Oil Pressure"
+    ];
+})
 
 
 
