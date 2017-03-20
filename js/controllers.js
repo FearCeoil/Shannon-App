@@ -120,8 +120,10 @@ function Day(data) {
 
 angular.module('starter.controllers', [])
 
-.controller('AppCtrl', function ($scope, Blog, $ionicLoading, $state, $location) {
-   //$ionicLoading.show();
+.controller('AppCtrl', function ($scope, Blog, $ionicLoading, $ionicPopup) {
+
+   // $ionicLoading.show();
+
     Blog.all().success(function (data) {
         console.log("got it")
 
@@ -129,10 +131,23 @@ angular.module('starter.controllers', [])
         $scope.browse = function (v) {
             window.open(v, "_system", "location=yes");
         };
+
         $ionicLoading.hide();
-        }).error(function (data) {
-            console.log("ERROR: " + data);
-            $state.go("app.error");
+
+    //}).error(function (data) {
+    //        $ionicLoading.hide();
+    //        $scope.hideContent = true;
+    //        var alertPopup = $ionicPopup.alert({
+    //            title: 'Network Error!',
+    //            template: 'Sorry, you need a network connection to access the features of this application',
+    //            cssClass: 'custom-popup',
+    //            okText: 'Close',
+    //            okType: 'button-balanced'
+    //        });
+    //        alertPopup.then(function (res) {
+    //            ionic.Platform.exitApp(); 
+    //            window.close();
+    //        });
     });
 
 })
@@ -141,8 +156,10 @@ angular.module('starter.controllers', [])
 
 })
 
-.controller('LoughReeCtrl', function ($scope, loughReeWeather, Beaufort, Hourly, $ionicLoading, $location) {
-    //$ionicLoading.show();
+.controller('LoughReeCtrl', function ($scope, loughReeWeather, Beaufort, HourlyRee, $ionicLoading, $ionicPopup) {
+
+    $ionicLoading.show();
+
     loughReeWeather.all().success(function (response) {
         //Current Weather
         var date = new Date(response.list[0].dt * 1000);
@@ -154,8 +171,8 @@ angular.module('starter.controllers', [])
         var windb = toBeauford(toKPH(response.list[0].speed));
         var windDeg = windDir(response.list[0].deg);
         var weatherIcon = response.list[0].weather[0].icon;
-        var weatherIconSrc = "img/weatherIcons/" + weatherIcon + ".png";
-        var windDirIconSrc = "img/windIcons/" + windDeg + ".png";
+        var weatherIconSrc = "img/weatherIconsW/" + weatherIcon + ".png";
+        var windDirIconSrc = "img/windIconsW/" + windDeg + ".png";
 
         $scope.location = location;
         $scope.weather = currentWeather;
@@ -174,8 +191,8 @@ angular.module('starter.controllers', [])
         var windb1 = toBeauford(toKPH(response.list[0].speed));
         var windDeg1 = windDir(response.list[1].deg);
         var weatherIcon1 = response.list[1].weather[0].icon;
-        var weatherIconSrc1 = "img/weatherIcons/" + weatherIcon1 + ".png";
-        var windDirIconSrc1 = "img/windIcons/" + windDeg1 + ".png";
+        var weatherIconSrc1 = "img/weatherIconsW/" + weatherIcon1 + ".png";
+        var windDirIconSrc1 = "img/windIconsW/" + windDeg1 + ".png";
 
         $scope.day1 = day1;
         $scope.weather1 = currentWeather1;
@@ -194,8 +211,8 @@ angular.module('starter.controllers', [])
         var windb2 = toBeauford(toKPH(response.list[2].speed));
         var windDeg2 = windDir(response.list[2].deg);
         var weatherIcon2 = response.list[2].weather[0].icon;
-        var weatherIconSrc2 = "img/weatherIcons/" + weatherIcon2 + ".png";
-        var windDirIconSrc2 = "img/windIcons/" + windDeg2 + ".png";
+        var weatherIconSrc2 = "img/weatherIconsW/" + weatherIcon2 + ".png";
+        var windDirIconSrc2 = "img/windIconsW/" + windDeg2 + ".png";
 
         $scope.day2 = day2;
         $scope.weather2 = currentWeather2;
@@ -205,17 +222,15 @@ angular.module('starter.controllers', [])
         $scope.weatherIcon2 = weatherIconSrc2;
         $scope.windDir2 = windDeg2;
 
-        if (warning(wind) == 1) {
-            $scope.show = 'msg1';
-        } else if (warning(wind) == 2) {
-            $scope.show = 'msg2';
-        } else if (warning(wind) == 3) {
-            $scope.show = 'msg3';
-        } else {
-            $scope.show = '';
-        }
-
-
+        //if (warning(wind) == 1) {
+        //    $scope.show = 'msg1';
+        //} else if (warning(wind) == 2) {
+        //    $scope.show = 'msg2';
+        //} else if (warning(wind) == 3) {
+        //    $scope.show = 'msg3';
+        //} else {
+        //    $scope.show = '';
+        //}
 
         Beaufort.all().success(function (response) {
             var pos = windb;
@@ -224,7 +239,7 @@ angular.module('starter.controllers', [])
             $scope.beaufortCon = response[pos].conditions;
         });
 
-            Hourly.all().success(function (hw) {
+        HourlyRee.all().success(function (hw) {
                 $scope.dt = sub(hw.list[0].dt_txt);
                 $scope.dt1 = sub(hw.list[1].dt_txt);
                 $scope.dt2 = sub(hw.list[2].dt_txt);
@@ -254,19 +269,294 @@ angular.module('starter.controllers', [])
                 });
 
             });
-                //$ionicLoading.hide();
+
+        $ionicLoading.hide();
+
     }).error(function () {
-            $state.go("app.error");
+
+        $ionicLoading.hide();
+
+        $scope.hideContent = true;
+            var alertPopup = $ionicPopup.alert({
+                title: 'Network Error!',
+                template: 'Sorry, you need a network connection to access the features of this application',
+                okText: 'Close',
+                okType: 'button-balanced'
+            });
+            alertPopup.then(function (res) {
+                ionic.Platform.exitApp(); 
+                window.close();
+            });  
     });
 
 })
 
-.controller('LoughAllenCtrl', function ($scope,loughAllenWeather, Beaufort, Hourly, $ionicLoading) {
-    $scope.test = "Lough Allen";
+.controller('LoughAllenCtrl', function ($scope, loughAllenWeather, Beaufort, HourlyAllen, $ionicLoading, $ionicPopup) {
+    
+    $ionicLoading.show();
+
+    loughAllenWeather.all().success(function (response) {
+        //Current Weather
+        var date = new Date(response.list[0].dt * 1000);
+        var day = Day(date.getDay());
+        var location = response.city.name;
+        var currentWeather = capitalize(response.list[0].weather[0].description);
+        var currentTemp = response.list[0].temp.day.toFixed(0);
+        var wind = toKPH(response.list[0].speed);
+        var windb = toBeauford(toKPH(response.list[0].speed));
+        var windDeg = windDir(response.list[0].deg);
+        var weatherIcon = response.list[0].weather[0].icon;
+        var weatherIconSrc = "img/weatherIconsW/" + weatherIcon + ".png";
+        var windDirIconSrc = "img/windIconsW/" + windDeg + ".png";
+
+        $scope.location = location;
+        $scope.weather = currentWeather;
+        $scope.temp = currentTemp;
+        $scope.windSpeed = wind;
+        $scope.windDirIcon = windDirIconSrc;
+        $scope.weatherIcon = weatherIconSrc;
+        $scope.windDir = windDeg;
+
+        //Tomorrows Weather
+        var date1 = new Date(response.list[1].dt * 1000);
+        var day1 = Day(date1.getDay());
+        var currentWeather1 = capitalize(response.list[1].weather[0].description);
+        var currentTemp1 = response.list[1].temp.day.toFixed(0);
+        var wind1 = toKPH(response.list[1].speed);
+        var windb1 = toBeauford(toKPH(response.list[0].speed));
+        var windDeg1 = windDir(response.list[1].deg);
+        var weatherIcon1 = response.list[1].weather[0].icon;
+        var weatherIconSrc1 = "img/weatherIconsW/" + weatherIcon1 + ".png";
+        var windDirIconSrc1 = "img/windIconsW/" + windDeg1 + ".png";
+
+        $scope.day1 = day1;
+        $scope.weather1 = currentWeather1;
+        $scope.temp1 = currentTemp1;
+        $scope.windSpeed1 = wind1;
+        $scope.windDirIcon1 = windDirIconSrc1;
+        $scope.weatherIcon1 = weatherIconSrc1;
+        $scope.windDir1 = windDeg1;
+
+        //Weather 2 days from now
+        var date2 = new Date(response.list[2].dt * 1000);
+        var day2 = Day(date2.getDay());
+        var currentWeather2 = capitalize(response.list[2].weather[0].description);
+        var currentTemp2 = response.list[2].temp.day.toFixed(0);
+        var wind2 = toKPH(response.list[2].speed);
+        var windb2 = toBeauford(toKPH(response.list[2].speed));
+        var windDeg2 = windDir(response.list[2].deg);
+        var weatherIcon2 = response.list[2].weather[0].icon;
+        var weatherIconSrc2 = "img/weatherIconsW/" + weatherIcon2 + ".png";
+        var windDirIconSrc2 = "img/windIconsW/" + windDeg2 + ".png";
+
+        $scope.day2 = day2;
+        $scope.weather2 = currentWeather2;
+        $scope.temp2 = currentTemp2;
+        $scope.windSpeed2 = wind2;
+        $scope.windDirIcon2 = windDirIconSrc2;
+        $scope.weatherIcon2 = weatherIconSrc2;
+        $scope.windDir2 = windDeg2;
+
+        //if (warning(wind) == 1) {
+        //    $scope.show = 'msg1';
+        //} else if (warning(wind) == 2) {
+        //    $scope.show = 'msg2';
+        //} else if (warning(wind) == 3) {
+        //    $scope.show = 'msg3';
+        //} else {
+        //    $scope.show = '';
+        //}
+
+        Beaufort.all().success(function (response) {
+            var pos = windb;
+            $scope.beaufortNum = pos;
+            $scope.beaufortDes = response[pos].description;
+            $scope.beaufortCon = response[pos].conditions;
+        });
+
+        HourlyAllen.all().success(function (hw) {
+            $scope.dt = sub(hw.list[0].dt_txt);
+            $scope.dt1 = sub(hw.list[1].dt_txt);
+            $scope.dt2 = sub(hw.list[2].dt_txt);
+            $scope.dt3 = sub(hw.list[3].dt_txt);
+            $scope.dt4 = sub(hw.list[4].dt_txt);
+
+            $scope.ws = toKPH(hw.list[0].wind.speed);
+            $scope.ws1 = toKPH(hw.list[1].wind.speed);
+            $scope.ws2 = toKPH(hw.list[2].wind.speed);
+            $scope.ws3 = toKPH(hw.list[3].wind.speed);
+            $scope.ws4 = toKPH(hw.list[4].wind.speed);
+
+            $scope.wd = windDir(hw.list[0].wind.deg);
+            $scope.wd1 = windDir(hw.list[1].wind.deg);
+            $scope.wd2 = windDir(hw.list[2].wind.deg);
+            $scope.wd3 = windDir(hw.list[3].wind.deg);
+            $scope.wd4 = windDir(hw.list[4].wind.deg);
+
+
+            Beaufort.all().success(function (response) {
+                $scope.b = toBeauford(toKPH(hw.list[0].wind.speed));
+                $scope.b1 = toBeauford(toKPH(hw.list[1].wind.speed));
+                $scope.b2 = toBeauford(toKPH(hw.list[2].wind.speed));
+                $scope.b3 = toBeauford(toKPH(hw.list[3].wind.speed));
+                $scope.b4 = toBeauford(toKPH(hw.list[4].wind.speed));
+
+            });
+
+        });
+
+        $ionicLoading.hide();
+
+    }).error(function () {
+
+        $ionicLoading.hide();
+
+        $scope.hideContent = true;
+        var alertPopup = $ionicPopup.alert({
+            title: 'Network Error!',
+            template: 'Sorry, you need a network connection to access the features of this application',
+            okText: 'Close',
+            okType: 'button-balanced'
+        });
+        alertPopup.then(function (res) {
+            ionic.Platform.exitApp();
+            window.close();
+        });
+    });
 })
 
-.controller('LoughDergCtrl', function ($scope,loughDergWeather, Beaufort, Hourly, $ionicLoading) {
-    $scope.test = "Lough Derg";
+.controller('LoughDergCtrl', function ($scope,loughDergWeather, Beaufort, HourlyDerg, $ionicLoading, $ionicPopup) {
+    
+    $ionicLoading.show();
+
+    loughDergWeather.all().success(function (response) {
+        //Current Weather
+        var date = new Date(response.list[0].dt * 1000);
+        var day = Day(date.getDay());
+        var location = response.city.name;
+        var currentWeather = capitalize(response.list[0].weather[0].description);
+        var currentTemp = response.list[0].temp.day.toFixed(0);
+        var wind = toKPH(response.list[0].speed);
+        var windb = toBeauford(toKPH(response.list[0].speed));
+        var windDeg = windDir(response.list[0].deg);
+        var weatherIcon = response.list[0].weather[0].icon;
+        var weatherIconSrc = "img/weatherIconsW/" + weatherIcon + ".png";
+        var windDirIconSrc = "img/windIconsW/" + windDeg + ".png";
+
+        $scope.location = location;
+        $scope.weather = currentWeather;
+        $scope.temp = currentTemp;
+        $scope.windSpeed = wind;
+        $scope.windDirIcon = windDirIconSrc;
+        $scope.weatherIcon = weatherIconSrc;
+        $scope.windDir = windDeg;
+
+        //Tomorrows Weather
+        var date1 = new Date(response.list[1].dt * 1000);
+        var day1 = Day(date1.getDay());
+        var currentWeather1 = capitalize(response.list[1].weather[0].description);
+        var currentTemp1 = response.list[1].temp.day.toFixed(0);
+        var wind1 = toKPH(response.list[1].speed);
+        var windb1 = toBeauford(toKPH(response.list[0].speed));
+        var windDeg1 = windDir(response.list[1].deg);
+        var weatherIcon1 = response.list[1].weather[0].icon;
+        var weatherIconSrc1 = "img/weatherIconsW/" + weatherIcon1 + ".png";
+        var windDirIconSrc1 = "img/windIconsW/" + windDeg1 + ".png";
+
+        $scope.day1 = day1;
+        $scope.weather1 = currentWeather1;
+        $scope.temp1 = currentTemp1;
+        $scope.windSpeed1 = wind1;
+        $scope.windDirIcon1 = windDirIconSrc1;
+        $scope.weatherIcon1 = weatherIconSrc1;
+        $scope.windDir1 = windDeg1;
+
+        //Weather 2 days from now
+        var date2 = new Date(response.list[2].dt * 1000);
+        var day2 = Day(date2.getDay());
+        var currentWeather2 = capitalize(response.list[2].weather[0].description);
+        var currentTemp2 = response.list[2].temp.day.toFixed(0);
+        var wind2 = toKPH(response.list[2].speed);
+        var windb2 = toBeauford(toKPH(response.list[2].speed));
+        var windDeg2 = windDir(response.list[2].deg);
+        var weatherIcon2 = response.list[2].weather[0].icon;
+        var weatherIconSrc2 = "img/weatherIconsW/" + weatherIcon2 + ".png";
+        var windDirIconSrc2 = "img/windIconsW/" + windDeg2 + ".png";
+
+        $scope.day2 = day2;
+        $scope.weather2 = currentWeather2;
+        $scope.temp2 = currentTemp2;
+        $scope.windSpeed2 = wind2;
+        $scope.windDirIcon2 = windDirIconSrc2;
+        $scope.weatherIcon2 = weatherIconSrc2;
+        $scope.windDir2 = windDeg2;
+
+        //if (warning(wind) == 1) {
+        //    $scope.show = 'msg1';
+        //} else if (warning(wind) == 2) {
+        //    $scope.show = 'msg2';
+        //} else if (warning(wind) == 3) {
+        //    $scope.show = 'msg3';
+        //} else {
+        //    $scope.show = '';
+        //}
+
+        Beaufort.all().success(function (response) {
+            var pos = windb;
+            $scope.beaufortNum = pos;
+            $scope.beaufortDes = response[pos].description;
+            $scope.beaufortCon = response[pos].conditions;
+        });
+
+        HourlyDerg.all().success(function (hw) {
+            $scope.dt = sub(hw.list[0].dt_txt);
+            $scope.dt1 = sub(hw.list[1].dt_txt);
+            $scope.dt2 = sub(hw.list[2].dt_txt);
+            $scope.dt3 = sub(hw.list[3].dt_txt);
+            $scope.dt4 = sub(hw.list[4].dt_txt);
+
+            $scope.ws = toKPH(hw.list[0].wind.speed);
+            $scope.ws1 = toKPH(hw.list[1].wind.speed);
+            $scope.ws2 = toKPH(hw.list[2].wind.speed);
+            $scope.ws3 = toKPH(hw.list[3].wind.speed);
+            $scope.ws4 = toKPH(hw.list[4].wind.speed);
+
+            $scope.wd = windDir(hw.list[0].wind.deg);
+            $scope.wd1 = windDir(hw.list[1].wind.deg);
+            $scope.wd2 = windDir(hw.list[2].wind.deg);
+            $scope.wd3 = windDir(hw.list[3].wind.deg);
+            $scope.wd4 = windDir(hw.list[4].wind.deg);
+
+
+            Beaufort.all().success(function (response) {
+                $scope.b = toBeauford(toKPH(hw.list[0].wind.speed));
+                $scope.b1 = toBeauford(toKPH(hw.list[1].wind.speed));
+                $scope.b2 = toBeauford(toKPH(hw.list[2].wind.speed));
+                $scope.b3 = toBeauford(toKPH(hw.list[3].wind.speed));
+                $scope.b4 = toBeauford(toKPH(hw.list[4].wind.speed));
+
+            });
+
+        });
+
+        $ionicLoading.hide();
+
+    }).error(function () {
+
+        $ionicLoading.hide();
+
+        $scope.hideContent = true;
+        var alertPopup = $ionicPopup.alert({
+            title: 'Network Error!',
+            template: 'Sorry, you need a network connection to access the features of this application',
+            okText: 'Close',
+            okType: 'button-balanced'
+        });
+        alertPopup.then(function (res) {
+            ionic.Platform.exitApp();
+            window.close();
+        });
+    });
 })
 
 .controller('journeyCtrl', function ($scope) {
@@ -339,7 +629,7 @@ angular.module('starter.controllers', [])
     }
 })
 
-.controller('Checklist', function ($scope, loughDergWeather, Beaufort, Hourly, $ionicLoading) {
+.controller('Checklist', function ($scope, $ionicLoading, $ionicPopup) {
     $scope.items = [
         "Fuel",
         "Water",

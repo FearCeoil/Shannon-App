@@ -1,11 +1,78 @@
-﻿<ion-view view-title="Lough Ree">
-    <ion-content class="padding">
-        <div class="card">
+﻿<ion-view view-title="Lough Ree"  class="pane1">
+    <ion-content  ng-hide="hideContent" class="ng-hide">
+       
+        <div class="row">
+            <div class="col mainPanel"><h3><span>Today</span></h3></div>
+        </div>
+        
+        <div class="row">
+            <div class="col mainPanel"><img src="{{weatherIcon}}" style="height:70px;" /><h3><span>{{weather}}</span></h3></div>
+            <div class="col mainPanel"><img src="img/tempIconsW/temp3.png" style="height:70px;" /><h3><span>{{temp}} &#8451</span></h3></div>
+        </div> 
+        
+        <div class="row">
+            <div class="col mainPanel"><img src="{{windDirIcon}}" style="height:60px;" /><h3><span>{{windDir}}</span></h3></div>
+            <div class="col mainPanel"><img src="img/windIconsW/wind.png" style="height:60px;" /><h3><span>{{windSpeed}} Kph</span></h3></div>
+        </div>
+
+        <div class="row">
+            <div class="col mainPanel">
+                <h4><span>Wind - Force {{beaufortNum}}</span></h4>
+                <h4><span>Description - {{beaufortDes}}</span></h4>
+                <h4><span>Condititions - {{beaufortCon}}</span></h4>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col mainPanel">
+                <table>
+                    <tr><th>Time</th><th>W.Speed</th><th>W.Dir</th><th>Force</th></tr>
+                    <tr><td>{{dt}}</td><td>{{ws}} kph</td><td>{{wd}}</td><td>{{b}}</td></tr>
+                    <tr><td>{{dt1}}</td><td>{{ws1}} kph</td><td>{{wd1}}</td><td>{{b1}}</td></tr>
+                    <tr><td>{{dt2}}</td><td>{{ws2}} kph</td><td>{{wd2}}</td><td>{{b2}}</td></tr>
+                    <tr><td>{{dt3}}</td><td>{{ws3}} kph</td><td>{{wd3}}</td><td>{{b3}}</td></tr>
+                    <tr><td>{{dt4}}</td><td>{{ws4}} kph</td><td>{{wd4}}</td><td>{{b4}}</td></tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col mainPanel"><h4><span>{{day1}}</span></h4></div>
+        </div>
+
+        <div class="row">
+            <div class="col mainPanel"><img src="{{weatherIcon1}}" style="height:50px;" /><h4><span>{{weather1}}</span></h4></div>
+            <div class="col mainPanel"><img src="img/tempIconsW/temp3.png" style="height:50px;" /><h4><span>{{temp1}} &#8451</span></h4></div>
+        </div>
+
+        <div class="row">
+            <div class="col mainPanel"><img src="{{windDirIcon1}}" style="height:50px;" /><h4><span>{{windDir1}}</span></h4></div>
+            <div class="col mainPanel"><img src="img/windIconsW/wind.png" style="height:50px;" /><h4><span>{{windSpeed1}} Kph</span></h4></div>
+        </div>
+
+        <div class="row">
+            <div class="col mainPanel"><h4><span>{{day2}}</span></h4></div>
+        </div>
+
+        <div class="row">
+            <div class="col mainPanel"><img src="{{weatherIcon2}}" style="height:50px;" /><h4><span>{{weather2}}</span></h4></div>
+            <div class="col mainPanel"><img src="img/tempIconsW/temp3.png" style="height:50px;" /><h4><span>{{temp2}} &#8451</span></h4></div>
+        </div>
+
+        <div class="row">
+            <div class="col mainPanel"><img src="{{windDirIcon2}}" style="height:50px;" /><h4><span>{{windDir2}}</span></h4></div>
+            <div class="col mainPanel"><img src="img/windIconsW/wind.png" style="height:50px;" /><h4><span>{{windSpeed2}} Kph</span></h4></div>
+        </div>
+
+
+
+
+            <!--<div class="card">
             <div class="item item-divider" style="text-align:center;"><strong>Today</strong></div>
             <div class="item item-divider" ng-show="show == 'msg1'" id="yellow">There is a status Yellow warning in effect!</div>
             <div class="item item-divider" ng-show="show == 'msg2'" id="orange">There is a status Orange warning in effect!</div>
             <div class="item item-divider" ng-show="show == 'msg3'" id="red">There is a status Red warning in effect!</div>
-               
+
             <div class="item item-body" style="padding-top:10px;">
                 <div class="row" style="text-align:center;">
                     <div class="col" style=""><img src="{{weatherIcon}}" class="weatherIcon"/><h2>{{weather}}</h2></div>
@@ -90,6 +157,6 @@
                     <div class="col" style=""><img src="img/windIcons/wind.png" class="weatherIcon" /><h2>{{windSpeed2}} Kph</h2></div>
                 </div>
             </div>
-        </div>
-    </ion-content>
+        </div>-->
+</ion-content>
 </ion-view>

@@ -21,13 +21,13 @@ angular.module('starter', ['ionic', 'starter.controllers','starter.services'])
     }
 
       //If no internet connection, diplay alert and close app.
-    if (window.Connection) {
-        if (navigator.connection.type == Connection.NONE) {
+    //if (window.Connection) {
+    //    if (navigator.connection.type == Connection.NONE) {
 
-            alert("No Network Connection");
-            navigator.app.exitApp();
-        }
-    }
+    //        alert("No Network Connection");
+    //        navigator.app.exitApp();
+    //    }
+    //}
 
   });
 })

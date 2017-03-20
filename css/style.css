@@ -25,3 +25,107 @@
     height:40px;
     width:auto;
 }
+
+.custom-popup.popup-container .popup {
+  /*background-color: lightgreen;*/
+}
+
+.mainPanel{
+  background-color: #04a501;
+  color: white;
+  text-align:center;
+  /*background: rgb(54, 25, 25);*/
+  /*background: rgba(54, 25, 25, .5);*/
+  background: rgba(4, 165, 1, 0.7);
+  margin:1px;
+  font-size: 50px;
+  overflow:hidden;
+  padding-top:15px;
+  
+}
+.mainPanel span { 
+    color:white;
+     
+}
+
+.subPanel{
+  background-color: #04a501;
+  color: white;
+  /*text-align:center;*/
+  /*background: rgb(54, 25, 25);*/
+  /*background: rgba(54, 25, 25, .5);*/
+  margin-top: 0px;
+  margin-left: 1px;
+  margin-right: 1px;
+  margin-bottom:0px;
+  overflow:hidden;
+  padding:15px;
+
+  
+}
+.subPanel span { 
+    color:white;
+}
+
+
+.pane1{
+background:url(../img/bg4.png) no-repeat center center fixed; 
+   -webkit-background-size: cover;
+   -moz-background-size: cover;
+    background-size: cover;
+}
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    padding: 8px;
+    text-align:center;
+    font-size: 17px;
+}
+
+/*tr:nth-child(even) {
+    background-color: #dddddd;
+}*/
+
+
+ /* or transparent, or background:none */
+/*.bar.bar-dark {
+  background-color: rgba(54, 25, 25, .5) !important;     
+}
+.scroll-content {
+  overflow: visible !important;
+}*/
+
+ .bar.bar-custom {
+    border-color: #28a54c;
+    background-color: #04a501;
+    background-image: linear-gradient(0deg, #28a54c, #28a54c 50%, transparent 50%);
+    color: #fff; }
+   .bar.bar-custom .title {
+      color: #fff; }
+   .bar.bar-custom.bar-footer {
+      background-image: linear-gradient(180deg, #28a54c, #28a54c 50%, transparent 50%); }
+.bar-custom .button {
+  border-color: #28a54c;
+  background-color: #33cd5f;
+  color: #fff; }
+  .bar-custom .button:hover {
+    color: #fff;
+    text-decoration: none; }
+  .bar-custom .button.active, .bar-balanced .button.activated {
+    border-color: #28a54c;
+    background-color: #28a54c; }
+  .bar-custom .button.button-clear {
+    border-color: transparent;
+    background: none;
+    box-shadow: none;
+    color: #fff;
+    font-size: 17px; }
+  .bar-custom .button.button-icon {
+    border-color: transparent;
+    background: none; }
